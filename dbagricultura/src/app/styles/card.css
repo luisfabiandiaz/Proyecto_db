@@ -1,0 +1,10 @@
+.rectangular-card {
+    border: solid;
+    border-color: var(--secondary-theme-color);
+    border-radius: 50px;
+    border-width: 0.5rem;
+    padding: 2rem;
+    width: 25rem;
+    height: 30rem;
+    transition: background-color 0.3s ease; /* Adding a smooth transition effect */
+  }

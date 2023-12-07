@@ -10,42 +10,42 @@ const [nombres, setNombres] = useState("");
 const [apellidos, setApellidos] = useState("");
 const [sueldo, setSueldo] = useState();
 const [telefono, setTelefono] = useState();
-const [licencia, setLicencia] = useState("");
-const [id_operario, setId_operario] = useState();
+const [grado, setGrado] = useState("");
+const [id_ingeniero, setId_ingeniero] = useState();
 
 const[editar,setEditar] = useState(false);
 
-const [operariosList, setOperarios] = useState([]);
+const [ingenierosList, setIngenieros] = useState([]);
 
 const add = () => {
-  Axios.post("http://localhost:3001/createOperario", {
+  Axios.post("http://localhost:3001/createIngeniero", {
     nombres:nombres,
     apellidos:apellidos,
     sueldo:sueldo,
     telefono:telefono,
-    licencia:licencia
+    grado:grado
   }).then(() => {
     limpiarCampos();
   });
 }
 
 const update = () => {
-  Axios.put("http://localhost:3001/updateOperario", {
-    id_operario:id_operario,
+  Axios.put("http://localhost:3001/updateIngeniero", {
+    id_ingeniero:id_ingeniero,
     nombres:nombres,
     apellidos:apellidos,
     sueldo:sueldo,
     telefono:telefono,
-    licencia:licencia
+    grado:grado
   }).then(() => {
-    getOperarios();
+    getIngenieros();
     limpiarCampos();
   });
 }
 
-const deleteOperario = (id_operario) => {
-  Axios.delete(`http://localhost:3001/deleteOperario/${id_operario}`).then(() => {
-    getOperarios();
+const deleteIngeniero = (id_ingeniero) => {
+  Axios.delete(`http://localhost:3001/deleteIngeniero/${id_ingeniero}`).then(() => {
+    getIngenieros();
     limpiarCampos();
   });
 }
@@ -55,24 +55,24 @@ const limpiarCampos = () =>{
   setApellidos("");
   setSueldo("");
   setTelefono("");
-  setLicencia("");
+  setGrado("");
   setEditar(false);
 }
 
-const editarOperario = (val) =>{
+const editarIngeniero = (val) =>{
   setEditar(true);
 
   setNombres(val.nombres);
   setApellidos(val.apellidos);
   setSueldo(val.sueldo);
   setTelefono(val.telefono);
-  setLicencia(val.licencia);
-  setId_operario(val.id_operario);
+  setGrado(val.grado);
+  setId_ingeniero(val.id_ingeniero);
 }
 
-const getOperarios = () => {
-  Axios.get("http://localhost:3001/operarios",).then((response) => {
-    setOperarios(response.data);
+const getIngenieros = () => {
+  Axios.get("http://localhost:3001/ingenieros",).then((response) => {
+    setIngenieros(response.data);
 
   });
 }
@@ -110,10 +110,10 @@ const getOperarios = () => {
           }}
           type="number"/></label><br/>
 
-          <label className="black-text">Licencia : 
-          <input value={licencia}
+          <label className="black-text">grado : 
+          <input value={grado}
           onChange={(event) => {
-            setLicencia(event.target.value);
+            setGrado(event.target.value);
           }}
           type="text"/></label><br/>
           <div>
@@ -130,21 +130,21 @@ const getOperarios = () => {
         </section>
         <section>
         <div className="lista black-text">
-          <button onClick={getOperarios}>Listar</button>
+          <button onClick={getIngenieros}>Listar</button>
           <div className="grid grid-cols-8 sm:grid-cols-8 lg:grid-cols-8 p-2 primary-highlight-text">
             <p>ID</p>
             <p>NOMBRES</p>
             <p>APELLIDOS</p>
             <p>SUELDO</p>
             <p>TELEFONO</p>
-            <p>LICENCIA</p>
+            <p>GRADO</p>
           </div>
           {
-            operariosList.map((val,key) => {
+            ingenierosList.map((val,key) => {
               return <div className=''> 
               <div className="grid grid-cols-8 sm:grid-cols-8 lg:grid-cols-8 p-2">
                 <div className="">
-                {val.id_operario}
+                {val.id_ingeniero}
                 </div>
                 <div className="">
                 {val.nombres}
@@ -159,16 +159,16 @@ const getOperarios = () => {
                 {val.telefono}
                 </div>
                 <div className="">
-                {val.licencia}
+                {val.grado}
                 </div>
                 <div className="">
                 <button onClick={()=>{
-                  editarOperario(val)
+                  editarIngeniero(val)
                 }} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Editar</button>
                 </div> 
                 <div className="">
                   <button onClick={()=>{
-                    deleteOperario(val.id_operario);
+                    deleteIngeniero(val.id_ingeniero);
                   }} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Eliminar</button>
                 </div> 
               </div>

@@ -29,11 +29,11 @@ const Header = () => {
                 <Link href="/" className="primary-highlight-text">
                   Inicio
                 </Link>
-                <Link href="/us" className="primary-highlight-text">
-                  Nosotros
+                <Link href="/ingenieros" className="primary-highlight-text">
+                  Ingenieros
                 </Link>
-                <Link href="/services" className="primary-highlight-text">
-                  Servicios
+                <Link href="/plantacion" className="primary-highlight-text">
+                  Plantacion
                 </Link>
                 <Link href="/products" className="primary-highlight-text">
                   Productos
