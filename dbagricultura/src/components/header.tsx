@@ -3,14 +3,14 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import logo from "@/assets/price.webp";
+import logo from "@/assets/img.jpeg";
 
 const Header = () => {
   return (
     <header>
       <nav className="header p-4 ">
         <div className="container mx-auto ">
-          <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-12">
+          <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4">
             <div className="md:col-span-2">
               <Link
                 href="/"
