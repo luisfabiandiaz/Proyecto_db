@@ -68,6 +68,19 @@ app.put("/updateOperario",(req, res) =>{
     );
 });
 
+app.delete("/deleteOperariostodo",(req, res) =>{
+    db.query('DELETE FROM operarios',
+    (err,result) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.send(result);
+        }
+    }
+    );
+});
+
 app.delete("/deleteOperario/:id_operario",(req, res) =>{
     const id_operario = req.params.id_operario;
     
@@ -126,6 +139,19 @@ app.put("/updateIngeniero",(req, res) =>{
 
     db.query('UPDATE ingenieros SET nombres=?, apellidos=?, sueldo=?, telefono=?, grado=? WHERE id_ingeniero=?',
     [nombres, apellidos, sueldo, telefono, grado, id_ingeniero],
+    (err,result) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.send(result);
+        }
+    }
+    );
+});
+
+app.delete("/deleteIngenierotodo",(req, res) =>{
+    db.query('DELETE FROM ingenieros',
     (err,result) => {
         if(err){
             console.log(err);
@@ -216,6 +242,19 @@ app.put("/updatePlantacion",(req, res) =>{
     );
 });
 
+app.delete("/deletePlantaciontodo",(req, res) =>{
+    db.query('DELETE FROM plantaciones',
+    (err,result) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.send(result);
+        }
+    }
+    );
+});
+
 app.delete("/deletePlantacion/:id_plantacion",(req, res) =>{
     const id_plantacion = req.params.id_plantacion;
     
@@ -230,7 +269,6 @@ app.delete("/deletePlantacion/:id_plantacion",(req, res) =>{
     }
     );
 });
-
 
 app.listen(3001,() => {
     console.log("corriendo en el puerto 3001")

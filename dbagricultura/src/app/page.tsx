@@ -43,6 +43,13 @@ const update = () => {
   });
 }
 
+const deleteOperariostodo = () => {
+  Axios.delete("http://localhost:3001/deleteOperariostodo").then(() => {
+    getOperarios();
+    limpiarCampos();
+  });
+}
+
 const deleteOperario = (id_operario) => {
   Axios.delete(`http://localhost:3001/deleteOperario/${id_operario}`).then(() => {
     getOperarios();
@@ -130,7 +137,14 @@ const getOperarios = () => {
         </section>
         <section>
         <div className="lista black-text">
-          <button onClick={getOperarios}>Listar</button>
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 p-2 primary-highlight-text">
+            <button onClick={getOperarios} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded m-10">
+              lista
+            </button>
+            <button onClick={deleteOperariostodo} className="bg-blue-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded m-10">
+              borrar todo
+            </button>
+            </div>
           <div className="grid grid-cols-8 sm:grid-cols-8 lg:grid-cols-8 p-2 primary-highlight-text">
             <p>ID</p>
             <p>NOMBRES</p>

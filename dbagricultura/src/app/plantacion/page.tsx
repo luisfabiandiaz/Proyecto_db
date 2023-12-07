@@ -53,6 +53,13 @@ const deletePlantacion = (id_plantacion) => {
   });
 }
 
+const deletePlantaciontodo = () => {
+  Axios.delete("http://localhost:3001/deletePlantaciontodo").then(() => {
+    getPlantacion();
+    limpiarCampos();
+  });
+}
+
 const limpiarCampos = () =>{
   setFcha_inicio("");
   setFcha_cosecha("");
@@ -116,8 +123,16 @@ const getPlantacion = () => {
         </section>
         <section>
         <div className="lista black-text">
-          <button onClick={getPlantacion}>Listar</button>
-          <div className="grid grid-cols-6 sm:grid-cols-6 lg:grid-cols-6 p-2 primary-highlight-text">
+
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 p-2 primary-highlight-text">
+            <button onClick={getPlantacion} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded m-10">
+              lista
+            </button>
+            <button onClick={deletePlantaciontodo} className="bg-blue-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded m-10">
+              borrar todo
+            </button>
+          </div>
+          <div className="grid grid-cols-7 sm:grid-cols-7 lg:grid-cols-7 p-2 primary-highlight-text">
             <p>ID</p>
             <p>FCHA_INICIO</p>
             <p>FCHA_COSECHA</p>

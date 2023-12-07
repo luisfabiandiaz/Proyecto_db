@@ -27,19 +27,13 @@ const Header = () => {
               </div>
               <div className="hidden md:flex space-x-5 justify-center gap-5">
                 <Link href="/" className="primary-highlight-text">
-                  Inicio
+                  Operarios
                 </Link>
                 <Link href="/ingenieros" className="primary-highlight-text">
                   Ingenieros
                 </Link>
                 <Link href="/plantacion" className="primary-highlight-text">
                   Plantacion
-                </Link>
-                <Link href="/products" className="primary-highlight-text">
-                  Productos
-                </Link>
-                <Link href="/contact" className="primary-highlight-text">
-                  Contacto
                 </Link>
               </div>
             </div>
